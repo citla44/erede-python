@@ -1,8 +1,7 @@
 import requests
-import erede
 
-from erede.Transaction import Transaction
-from erede.RedeError import RedeError
+from ..Transaction import Transaction
+from ..RedeError import RedeError
 
 
 class TransactionService:
@@ -24,7 +23,7 @@ class TransactionService:
         return "{}/transactions".format(self.store.environment.endpoint)
 
     def send_request(self, method, body=None):
-        headers = {'User-Agent': "{} Store/{}".format(erede.eRede.USER_AGENT, self.store.filliation),
+        headers = {'User-Agent': "eRede/1.0 (SDK; Python) Store/{}".format(self.store.filliation),
                    "Accept": "application/json",
                    "Content-Type": "application/json"}
 
