@@ -1,7 +1,10 @@
 import requests
+import logging
 
 from ..Transaction import Transaction
 from ..RedeError import RedeError
+
+logger = logging.getLogger(__name__)
 
 
 class TransactionService:
@@ -27,6 +30,7 @@ class TransactionService:
                    "Accept": "application/json",
                    "Content-Type": "application/json"}
 
+        logger.debug(body)
         response = getattr(requests, method)(self.get_uri(),
                                              auth=(self.store.filliation, self.store.token),
                                              data=body,
@@ -40,4 +44,5 @@ class TransactionService:
 
             raise RedeError(error.get("returnMessage", "opz"), error.get("returnCode", 0))
 
+        logger.info(response.json())
         return Transaction.unserialize(response.json())

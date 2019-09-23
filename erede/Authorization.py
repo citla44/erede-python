@@ -1,4 +1,7 @@
-class Authorization:
+from .RedeSerializable import RedeSerializable
+
+
+class Authorization(RedeSerializable):
     def __init__(self):
         self.affiliation = None
         self.amount = None

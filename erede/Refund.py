@@ -1,4 +1,7 @@
-class Refund:
+from .RedeSerializable import RedeSerializable
+
+
+class Refund(RedeSerializable):
     def __init__(self):
         self.amount = None
         self.refundDateTime = None
